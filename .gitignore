@@ -1,7 +1,3 @@
 .DS_Store
-docs/*/*
-docs/api.js
-docs/data.json
-docs/data.json
-docs/index.html
+docs/yuidoc/
 node_modules/*
