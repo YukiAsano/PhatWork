@@ -1,3 +1,7 @@
 .DS_Store
-docs/*
+docs/*/*
+docs/api.js
+docs/data.json
+docs/data.json
+docs/index.html
 node_modules/*
