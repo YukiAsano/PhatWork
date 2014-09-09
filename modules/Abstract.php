@@ -5,43 +5,137 @@ define('DS', DIRECTORY_SEPARATOR);
 abstract class Modules_Abstract
 {
 
+    /**
+     * チャットワークAPIエンドポイントベースURL
+     *
+     * @property BASE_URL
+     * @type String
+     * @default 'https://api.chatwork.com/v1'
+     */
     const BASE_URL = 'https://api.chatwork.com/v1';
 
+    /**
+     * APIキー
+     *
+     * @protected
+     * @property $_apiKey
+     * @type String
+     */
     protected $_apiKey;
 
+    /**
+     * モジュール抽象クラス
+     *
+     * @final
+     * @class Modules_Abstract
+     * @constructor
+     * @param {String} [$apiKey=null] APIキー
+     */
     final public function __construct($apiKey = null)
     {
         $this->init($apiKey);
     }
 
+    /**
+     * 初期化メソッド
+     *
+     * @public
+     * @method init
+     * @param {String} [$apiKey=null] APIキー
+     */
     public function init($apiKey = null)
     {
         $this->_apiKey = $apiKey;
         $this->_initSelf();
     }
+
+    /**
+     * APIキー設定メソッド
+     *
+     * @public
+     * @method setApiKey
+     * @param {String} $apiKey APIキー
+     */
     public function setApiKey($apiKey)
     {
         $this->_apiKey = $apiKey;
     }
 
+    /**
+     * サブクラス初期化抽象メソッド
+     *
+     * @abstract
+     * @protected
+     * @method _initSelf
+     */
     abstract protected function _initSelf();
 
+    /**
+     * POSTメソッド
+     *
+     * @protected
+     * @method _post
+     * @param {String} $url URL
+     * @param {Array} $body リクエストボディ
+     * @return {Array} デコードされたレスポンス
+     */
     protected function _post($url, $body)
     {
         return $this->_exec($url, $body, 'POST');
     }
+
+    /**
+     * GETメソッド
+     *
+     * @protected
+     * @method _get
+     * @param {String} $url URL
+     * @param {Array} $body リクエストボディ
+     * @return {Array} デコードされたレスポンス
+     */
     protected function _get($url, $body)
     {
         return $this->_exec($url, $body, 'GET');
     }
+
+    /**
+     * PUTメソッド
+     *
+     * @protected
+     * @method _put
+     * @param {String} $url URL
+     * @param {Array} $body リクエストボディ
+     * @return {Array} デコードされたレスポンス
+     */
     protected function _put($url, $body)
     {
         return $this->_exec($url, $body, 'PUT');
     }
+
+    /**
+     * DELETEメソッド
+     *
+     * @protected
+     * @method _delete
+     * @param {String} $url URL
+     * @param {Array} $body リクエストボディ
+     * @return {Array} デコードされたレスポンス
+     */
     protected function _delete($url, $body)
     {
         return $this->_exec($url, $body, 'DELETE');
     }
+
+    /**
+     * 送信実行メソッド
+     *
+     * @protected
+     * @method _exec
+     * @param {String} $url URL
+     * @param {Array} $body リクエストボディ
+     * @param {String} $method 送信メソッド
+     * @return {Array} デコードされたレスポンス
+     */
     protected function _exec($url, $body, $method)
     {
         $content = '';
