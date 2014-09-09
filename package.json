@@ -1,0 +1,26 @@
+{
+  "name": "PhatWork",
+  "version": "0.0.0",
+  "description": "ChatWork API Library For PHP",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/flame1980/PhatWork.git"
+  },
+  "author": "flame1980",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flame1980/PhatWork/issues"
+  },
+  "homepage": "https://github.com/flame1980/PhatWork",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-yuidoc": "^0.5.2"
+  }
+}
