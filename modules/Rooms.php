@@ -184,7 +184,52 @@ class Modules_Rooms extends Modules_Abstract
 
         $url = $this->_apiUrl . '/' . $roomId;
         $ret = $this->_put($url, $params);
-        return isset($ret['room_id']);
+        return isset($ret['room_id']) ? $ret['room_id'] : false;
+    }
+
+    /**
+     * チャット概要をアップデート
+     *
+     * @public
+     * @method setDescription
+     * @param {String} $description チャット概要
+     * @return {Integer} チャットルームID、またはfalse
+     */
+    public function setDescription($description)
+    {
+        return $this->set(array(
+            'description' => $description
+        ));
+    }
+
+    /**
+     * アイコンをアップデート
+     *
+     * @public
+     * @method setIcon
+     * @param {String} $icon チャット概要
+     * @return {Integer} チャットルームID、またはfalse
+     */
+    public function setIcon($icon)
+    {
+        return $this->set(array(
+            'icon_preset' => $icon
+        ));
+    }
+
+    /**
+     * チャットの名前をアップデート
+     *
+     * @public
+     * @method setName
+     * @param {String} $name グループチャット名
+     * @return {Integer} チャットルームID、またはfalse
+     */
+    public function setName($name)
+    {
+        return $this->set(array(
+            'name' => $name
+        ));
     }
 
     /**
@@ -218,5 +263,65 @@ class Modules_Rooms extends Modules_Abstract
 
         // 戻り値なし
         return true;
+    }
+
+    /**
+     * グループチャットを退席する
+     *
+     * @public
+     * @method leave
+     * @return {Boolean} true
+     */
+    public function leave()
+    {
+        return $this->remove(array(
+            'action_type' => 'leave'
+        ));
+    }
+
+    /**
+     * グループチャットを削除する
+     *
+     * @public
+     * @method delete
+     * @return {Boolean} true
+     */
+    public function delete()
+    {
+        return $this->remove(array(
+            'action_type' => 'delete'
+        ));
+    }
+
+    /**
+     * チャットに新しいメッセージを追加
+     *
+     * @public
+     * @method setMessage
+     * @param {Array} $params パラメータ配列
+     * <pre><code>array(
+     *     'room_id' => '[チャットルームID]',
+     *     'body' => '[メッセージ本文]',
+     * )
+     * </code></pre>
+     * @return {Boolean} true
+     */
+    public function setMessage($params)
+    {
+        $roomId = null;
+        if (!isset($params['room_id'])) {
+            $roomId = $this->_roomId;
+            if (is_null($roomId)) {
+                return false;
+            }
+        } else {
+            $roomId = $params['room_id'];
+            unset($params['room_id']);
+        }
+
+        $url = $this->_apiUrl . '/' . $roomId.self::MESSAGES_URL;
+        $ret = $this->_post($url, $params);
+
+        return isset($ret['message_id']) ? $ret['message_id'] : false;
     }
 }
