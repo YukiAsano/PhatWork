@@ -1,21 +1,62 @@
 <?php
 
+/**
+ * PhatWorkクラス
+ *
+ * @class PW
+ */
 class PW
 {
 
-    const BASE_URL = 'https://api.chatwork.com/v1';
-
+    /**
+     * インスタンス保持
+     *
+     * @protected
+     * @static
+     * @property $_instance
+     * @type PW
+     */
     protected static $_instance;
 
+    /**
+     * APIキー
+     *
+     * @protected
+     * @property $_apiKey
+     * @type String
+     */
     protected $_apiKey;
-    protected $_roomId;
-    protected $_title = null;
 
+    /**
+     * クラス参照保持
+     *
+     * @protected
+     * @property $_classes
+     * @type Array
+     */
+    protected $_classes = array();
+
+    /**
+     * コンストラクタ
+     *
+     * @public
+     * @method __construct
+     * @constructor
+     * @param {String} $apiKey APIキー
+     */
     public function __construct($apiKey)
     {
         $this->_apiKey = $apiKey;
     }
 
+    /**
+     * インスタンス取得メソッド
+     *
+     * @public
+     * @static
+     * @method getInstance
+     * @param {String} $apiKey APIキー
+     */
     public static function getInstance($apiKey)
     {
         if (!self::$_instance) {
@@ -25,20 +66,26 @@ class PW
     }
 
     /**
-     * 値の取得
+     * クラス取得オーバーロード
+     *
+     * @public
+     * @method __get
+     * @param {String} $key エンドポイントキー
      */
     public function __get($key)
     {
         $key = ucfirst(strtolower($key));
-        $fileName = "modules/{$key}.php";
-        if (!file_exists($fileName)) {
-            return null;
-        }
-        require_once($fileName);
         $className = 'Modules_'.$key;
-        $class = new $className($this->_apiKey);
+        if (!isset($this->_classes[$className])) {
+            $fileName = "modules/{$key}.php";
+            if (!file_exists($fileName)) {
+                return null;
+            }
+            require_once($fileName);
+            $class = new $className($this->_apiKey);
+        } else {
+            $class = $this->_classes[$className];
+        }
         return $class;
     }
-
 }
-

@@ -2,6 +2,12 @@
 
 define('DS', DIRECTORY_SEPARATOR);
 
+/**
+ * モジュール抽象クラス
+ *
+ * @abstract
+ * @class Modules_Abstract
+ */
 abstract class Modules_Abstract
 {
 
@@ -24,10 +30,11 @@ abstract class Modules_Abstract
     protected $_apiKey;
 
     /**
-     * モジュール抽象クラス
+     * コンストラクタ
      *
      * @final
-     * @class Modules_Abstract
+     * @public
+     * @method __construct
      * @constructor
      * @param {String} [$apiKey=null] APIキー
      */

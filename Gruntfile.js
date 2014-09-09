@@ -16,7 +16,7 @@ module.exports = function(grunt) {
                 url: '<%= pkg.homepage %>',
                 options: {
                     extension: ".php",
-                    paths: ['modules/'],
+                    paths: ['modules/','./'],
                     outdir: './docs/yuidoc'
                 }
             }
