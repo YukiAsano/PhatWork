@@ -75,7 +75,7 @@ class Modules_My extends Modules_Abstract
      *
      * @public
      * @method getTasks
-     * @param {Array} $params
+     * @param {Array} $params パラメータ配列
      * <pre><code>array(
      *     'assigned_by_account_id' => '[タスクの依頼者のアカウントID]',
      *     'status' => '[タスクのステータス]',

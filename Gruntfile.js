@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                 options: {
                     extension: ".php",
                     paths: ['modules/'],
-                    outdir: './docs'
+                    outdir: './docs/yuidoc'
                 }
             }
         }

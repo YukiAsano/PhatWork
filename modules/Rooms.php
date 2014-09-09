@@ -136,7 +136,7 @@ class Modules_Rooms extends Modules_Abstract
      *
      * @public
      * @method create
-     * @param {Array} $params
+     * @param {Array} $params パラメータ配列
      * <pre><code>array(
      *     'description' => '[チャット概要]',
      *     'icon_preset' => '[アイコン種類]',
@@ -159,7 +159,7 @@ class Modules_Rooms extends Modules_Abstract
      *
      * @public
      * @method set
-     * @param {Array} $params
+     * @param {Array} $params パラメータ配列
      * <pre><code>array(
      *     'room_id' => '[チャットルームID]',
      *     'description' => '[チャット概要]',
@@ -192,7 +192,7 @@ class Modules_Rooms extends Modules_Abstract
      *
      * @public
      * @method remove
-     * @param {Array} $params
+     * @param {Array} $params パラメータ配列
      * <pre><code>array(
      *     'room_id' => '[チャットルームID]',
      *     'action_type' => '[退席するか、削除するか]',
