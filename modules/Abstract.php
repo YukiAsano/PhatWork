@@ -34,23 +34,30 @@ abstract class Modules_Abstract
     {
         return $this->_exec($url, $body, 'GET');
     }
+    protected function _put($url, $body)
+    {
+        return $this->_exec($url, $body, 'PUT');
+    }
     protected function _exec($url, $body, $method)
     {
+        $content = '';
+
         // 送信データ
-        $data = array(
-            'body' => $body,
-        );
-        $content = http_build_query($data, "", "&");
+        if (!is_null($body)) {
+            $content = http_build_query($body, "", "&");
+        }
 
         // Header
         $header = array(
+            'Content-Type: application/x-www-form-urlencoded',
+            'Content-Length: '.strlen($content),
             'X-ChatWorkToken: ' . $this->_apiKey,
         );
 
         $context = array(
             'http' => array(
                 'method'  => $method,
-                'header'  => implode("¥r¥n", $header),
+                'header'  => implode("\r\n", $header),
                 'content' => $content,
             )
         );
