@@ -38,6 +38,10 @@ abstract class Modules_Abstract
     {
         return $this->_exec($url, $body, 'PUT');
     }
+    protected function _delete($url, $body)
+    {
+        return $this->_exec($url, $body, 'DELETE');
+    }
     protected function _exec($url, $body, $method)
     {
         $content = '';
