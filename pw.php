@@ -76,6 +76,7 @@ class PW
     {
         $key = ucfirst(strtolower($key));
         $className = 'Modules_'.$key;
+
         if (!isset($this->_classes[$className])) {
             $fileName = "modules/{$key}.php";
             if (!file_exists($fileName)) {
@@ -83,6 +84,7 @@ class PW
             }
             require_once($fileName);
             $class = new $className($this->_apiKey);
+            $this->_classes[$className] = $class;
         } else {
             $class = $this->_classes[$className];
         }
