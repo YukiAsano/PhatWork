@@ -150,6 +150,9 @@ abstract class Modules_Abstract
         // 送信データ
         if (!is_null($body)) {
             $content = http_build_query($body, "", "&");
+            if ($method === 'GET') {
+                $url .= '?'.$content;
+            }
         }
 
         // Header
