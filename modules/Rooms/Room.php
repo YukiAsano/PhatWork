@@ -333,4 +333,109 @@ class Modules_Rooms_Room extends Modules_Abstract
         $url = $this->_apiUrl . self::MESSAGES_URL . '/' . $messageId;
         return $this->_get($url, null);
     }
+
+    /**
+     * チャットのタスク一覧を取得<br />
+     *  (※100件まで取得可能。今後、より多くのデータを取得する為のページネーションの仕組みを提供予定)
+     *
+     * @public
+     * @method getTasks
+     * @param {Array} [$params=null] パラメータ配列
+     * <pre><code>array(
+     *     'account_id' => '[タスクの担当者のアカウントID]',
+     *     'assigned_by_account_id' => '[タスクの依頼者のアカウントID]',
+     *     'status' => '[タスクのステータス]',
+     * )
+     * </code></pre>
+     * @return {Array} タスク一覧
+     */
+    public function getTasks($params = null)
+    {
+        $url = $this->_apiUrl . self::TASKS_URL;
+        return $this->_get($url, $params);
+    }
+
+    /**
+     * チャットの未完了タスク一覧を取得
+     *
+     * @public
+     * @method getOpenTasks
+     * @param {Integer} [$accountId=null] アカウントID
+     * @return {Array} 未完了タスク一覧
+     */
+    public function getOpenTasks($accountId = null)
+    {
+        $params = array(
+            'status' => 'open'
+        );
+        if (!is_null($accountId)) {
+            $params['account_id'] = $accountId;
+        }
+        return $this->getTasks($params);
+    }
+
+    /**
+     * チャットの完了タスク一覧を取得
+     *
+     * @public
+     * @method getDoneTasks
+     * @param {Integer} [$accountId=null] アカウントID
+     * @return {Array} 完了なタスク一覧
+     */
+    public function getDoneTasks($accountId = null)
+    {
+        $params = array(
+            'status' => 'done'
+        );
+        if (!is_null($accountId)) {
+            $params['account_id'] = $accountId;
+        }
+        return $this->getTasks($params);
+    }
+
+    /**
+     * チャットに新しいメッセージを追加
+     *
+     * @public
+     * @chainable
+     * @method setMessages
+     * @param {Array} $params パラメータ配列
+     * <pre><code>array(
+     *     'body' => '[タスクの内容（必須）]',
+     *     'limit' => '[タスクの期限 Unix time]',
+     *     'to_ids' => '[担当者のアカウントID（必須、カンマ区切り複数指定）]',
+     * )
+     * </code></pre>
+     * @param {Boolean} [$bReturnInstance=true] インスタンス返却フラグ
+     * @return {mixed} タスクID、チャットルームインスタンス、またはfalse
+     */
+    public function setTasks($params, $bReturnInstance = true)
+    {
+        $url = $this->_apiUrl . self::TASKS_URL;
+        $ret = $this->_post($url, $params);
+
+        $return = null;
+        if (isset($ret['task_ids'])) {
+            if ($bReturnInstance !== true) {
+                $return = $ret['task_ids'];
+            }
+        } else {
+            $return = false;
+        }
+        return is_null($return) ? $this : $return;
+    }
+
+    /**
+     * タスク情報を取得
+     *
+     * @public
+     * @method getMessage
+     * @param {String} $taskId タスクID
+     * @return {Array} タスク情報
+     */
+    public function getTask($taskId)
+    {
+        $url = $this->_apiUrl . self::TASKS_URL . '/' . $taskId;
+        return $this->_get($url, null);
+    }
 }
