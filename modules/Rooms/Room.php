@@ -429,7 +429,7 @@ class Modules_Rooms_Room extends Modules_Abstract
      * タスク情報を取得
      *
      * @public
-     * @method getMessage
+     * @method getTask
      * @param {String} $taskId タスクID
      * @return {Array} タスク情報
      */
