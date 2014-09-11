@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>modules/Rooms.php - PhatWork</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="PhatWork"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Modules_Abstract.html">Modules_Abstract</a></li>
+            
+                <li><a href="../classes/Modules_Contacts.html">Modules_Contacts</a></li>
+            
+                <li><a href="../classes/Modules_Me.html">Modules_Me</a></li>
+            
+                <li><a href="../classes/Modules_My.html">Modules_My</a></li>
+            
+                <li><a href="../classes/Modules_Rooms.html">Modules_Rooms</a></li>
+            
+                <li><a href="../classes/Modules_Rooms_Room.html">Modules_Rooms_Room</a></li>
+            
+                <li><a href="../classes/PW.html">PW</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/Modules_Contacts.html">Modules_Contacts</a></li>
+            
+                <li><a href="../modules/Modules_Me.html">Modules_Me</a></li>
+            
+                <li><a href="../modules/Modules_My.html">Modules_My</a></li>
+            
+                <li><a href="../modules/Modules_Rooms.html">Modules_Rooms</a></li>
+            
+                <li><a href="../modules/Modules_Rooms_Room.html">Modules_Rooms_Room</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: modules/Rooms.php</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&lt;?php
+
+require_once(&#x27;Abstract.php&#x27;);
+require_once(&#x27;Rooms/Room.php&#x27;);
+
+/**
+ * チャットルーム管理モジュール
+ *
+ * @module Modules_Rooms
+ * @requires Modules_Rooms_Room
+ */
+class Modules_Rooms extends Modules_Abstract
+{
+    /**
+     * チャットルーム管理クラス
+     *
+     * @class Modules_Rooms
+     * @extends Modules_Abstract
+     * @constructor
+     */
+
+    /**
+     * チャットワークAPIエンドポイントパス
+     *
+     * @property ENDPOINT
+     * @type String
+     * @default &#x27;/rooms&#x27;
+     */
+    const ENDPOINT = &#x27;/rooms&#x27;;
+
+    /**
+     * チャットルーム保持
+     *
+     * @private
+     * @property $_rooms
+     * @type Array
+     */
+    public $_rooms = array();
+
+    /**
+     * サブクラス初期化メソッド
+     *
+     * @protected
+     * @method _initSelf
+     */
+    protected function _initSelf()
+    {
+        $this-&gt;_apiUrl = self::BASE_URL.self::ENDPOINT;
+    }
+
+    /**
+     * チャットルームインスタンス取得
+     *
+     * @public
+     * @method getRoom
+     * @param {Integer} $roomId チャットルームID
+     * @return {Modules_Rooms_Room} チャットルームインスタンス
+     */
+    public function getRoom($roomId)
+    {
+        if (!isset($this-&gt;_rooms[$roomId])) {
+            $childClsName = get_class().&#x27;_Room&#x27;;
+            $roomInstance = new $childClsName($this-&gt;_apiKey);
+            $this-&gt;_rooms[$roomId] = $roomInstance-&gt;setId($roomId);
+        }
+        return $this-&gt;_rooms[$roomId];
+    }
+
+    /**
+     * 自分のチャット一覧の取得
+     *
+     * @public
+     * @method getList
+     * @return {Array} チャットルームリスト
+     */
+    public function getList()
+    {
+        return $this-&gt;_get($this-&gt;_apiUrl, null);
+    }
+
+    /**
+     * グループチャットを新規作成
+     *
+     * @public
+     * @method create
+     * @param {Array} $params パラメータ配列
+     * &lt;pre&gt;&lt;code&gt;array(
+     *     &#x27;description&#x27; =&gt; &#x27;[チャット概要]&#x27;,
+     *     &#x27;icon_preset&#x27; =&gt; &#x27;[アイコン種類]&#x27;,
+     *     &#x27;members_admin_ids&#x27; =&gt; &#x27;[管理者権限のユーザー（必須、カンマ区切り複数指定）]&#x27;,
+     *     &#x27;members_member_ids&#x27; =&gt; &#x27;[メンバー権限のユーザー（カンマ区切り複数指定）]&#x27;,
+     *     &#x27;members_readonly_ids&#x27; =&gt; &#x27;[閲覧のみ権限のユーザー（カンマ区切り複数指定）]&#x27;,
+     *     &#x27;name&#x27; =&gt; &#x27;[グループチャット名（必須）]&#x27;,
+     * )
+     * &lt;/code&gt;&lt;/pre&gt;
+     * @param {Boolean} [$bReturnInstance=true] インスタンス返却フラグ
+     * @return {mixed} チャットルームID、チャットルームインスタンス、またはfalse
+     */
+    public function create($params, $bReturnInstance = true)
+    {
+        $ret = $this-&gt;_post($this-&gt;_apiUrl, $params);
+
+        $return = null;
+        if (isset($ret[&#x27;room_id&#x27;])) {
+            if ($bReturnInstance) {
+                $return = $this-&gt;getRoom($ret[&#x27;room_id&#x27;]);
+            }
+        } else {
+            $return = false;
+        }
+        return is_null($return) ? $ret[&#x27;room_id&#x27;] : $return;
+    }
+}
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,0 +1,1463 @@
+{
+    "project": {
+        "name": "PhatWork",
+        "description": "ChatWork API Library For PHP",
+        "version": "0.0.0",
+        "url": "https://github.com/flame1980/PhatWork"
+    },
+    "files": {
+        "modules/Rooms/Room.php": {
+            "name": "modules/Rooms/Room.php",
+            "modules": {
+                "Modules_Rooms_Room": 1
+            },
+            "classes": {
+                "Modules_Rooms_Room": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "modules/Abstract.php": {
+            "name": "modules/Abstract.php",
+            "modules": {},
+            "classes": {
+                "Modules_Abstract": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "modules/Contacts.php": {
+            "name": "modules/Contacts.php",
+            "modules": {
+                "Modules_Contacts": 1
+            },
+            "classes": {
+                "Modules_Contacts": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "modules/Me.php": {
+            "name": "modules/Me.php",
+            "modules": {
+                "Modules_Me": 1
+            },
+            "classes": {
+                "Modules_Me": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "modules/My.php": {
+            "name": "modules/My.php",
+            "modules": {
+                "Modules_My": 1
+            },
+            "classes": {
+                "Modules_My": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "modules/Rooms.php": {
+            "name": "modules/Rooms.php",
+            "modules": {
+                "Modules_Rooms": 1
+            },
+            "classes": {
+                "Modules_Rooms": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "pw.php": {
+            "name": "pw.php",
+            "modules": {},
+            "classes": {
+                "PW": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Modules_Rooms_Room": {
+            "name": "Modules_Rooms_Room",
+            "submodules": {},
+            "classes": {
+                "Modules_Rooms_Room": 1,
+                "Modules_Abstract": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "modules/Abstract.php",
+            "line": 37,
+            "description": "チャットルームモジュール"
+        },
+        "Modules_Contacts": {
+            "name": "Modules_Contacts",
+            "submodules": {},
+            "classes": {
+                "Modules_Contacts": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "modules/Contacts.php",
+            "line": 12,
+            "description": "コンタクトユーザモジュール"
+        },
+        "Modules_Me": {
+            "name": "Modules_Me",
+            "submodules": {},
+            "classes": {
+                "Modules_Me": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "modules/Me.php",
+            "line": 12,
+            "description": "自分自身の情報モジュール"
+        },
+        "Modules_My": {
+            "name": "Modules_My",
+            "submodules": {},
+            "classes": {
+                "Modules_My": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "modules/My.php",
+            "line": 12,
+            "description": "自分が持つデータへのアクセスモジュール"
+        },
+        "Modules_Rooms": {
+            "name": "Modules_Rooms",
+            "submodules": {},
+            "classes": {
+                "Modules_Rooms": 1,
+                "PW": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "pw.php",
+            "line": 37,
+            "description": "チャットルーム管理モジュール",
+            "requires": [
+                "Modules_Rooms_Room"
+            ]
+        }
+    },
+    "classes": {
+        "Modules_Rooms_Room": {
+            "name": "Modules_Rooms_Room",
+            "shortname": "Modules_Rooms_Room",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Modules_Rooms_Room",
+            "namespace": "",
+            "file": "modules/Rooms/Room.php",
+            "line": 10,
+            "description": "チャットルームクラス",
+            "extends": "Modules_Abstract",
+            "is_constructor": 1
+        },
+        "Modules_Abstract": {
+            "name": "Modules_Abstract",
+            "shortname": "Modules_Abstract",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Modules_Rooms_Room",
+            "namespace": "",
+            "file": "modules/Abstract.php",
+            "line": 37,
+            "description": "モジュール抽象クラス",
+            "final": 1,
+            "access": "public",
+            "tagname": "",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$apiKey",
+                    "description": "APIキー",
+                    "type": "String"
+                }
+            ]
+        },
+        "Modules_Contacts": {
+            "name": "Modules_Contacts",
+            "shortname": "Modules_Contacts",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Modules_Contacts",
+            "namespace": "",
+            "file": "modules/Contacts.php",
+            "line": 12,
+            "description": "コンタクトユーザクラス",
+            "extends": "Modules_Abstract",
+            "is_constructor": 1
+        },
+        "Modules_Me": {
+            "name": "Modules_Me",
+            "shortname": "Modules_Me",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Modules_Me",
+            "namespace": "",
+            "file": "modules/Me.php",
+            "line": 12,
+            "description": "自分自身の情報クラス",
+            "extends": "Modules_Abstract",
+            "is_constructor": 1
+        },
+        "Modules_My": {
+            "name": "Modules_My",
+            "shortname": "Modules_My",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Modules_My",
+            "namespace": "",
+            "file": "modules/My.php",
+            "line": 12,
+            "description": "自分が持つデータへのアクセスクラス",
+            "extends": "Modules_Abstract",
+            "is_constructor": 1
+        },
+        "Modules_Rooms": {
+            "name": "Modules_Rooms",
+            "shortname": "Modules_Rooms",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Modules_Rooms",
+            "namespace": "",
+            "file": "modules/Rooms.php",
+            "line": 14,
+            "description": "チャットルーム管理クラス",
+            "extends": "Modules_Abstract",
+            "is_constructor": 1
+        },
+        "PW": {
+            "name": "PW",
+            "shortname": "PW",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Modules_Rooms",
+            "namespace": "",
+            "file": "pw.php",
+            "line": 37,
+            "description": "PhatWorkクラス",
+            "access": "public",
+            "tagname": "",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "$apiKey",
+                    "description": "APIキー",
+                    "type": "String"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 18,
+            "description": "チャットワークAPIエンドポイントパス",
+            "itemtype": "property",
+            "name": "ENDPOINT",
+            "type": "String",
+            "default": "'/rooms'",
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 27,
+            "description": "メンバー関連追加URL",
+            "itemtype": "property",
+            "name": "MEMBERS_URL",
+            "type": "String",
+            "default": "'/members'",
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 36,
+            "description": "メッセージ関連追加URL",
+            "itemtype": "property",
+            "name": "MESSAGES_URL",
+            "type": "String",
+            "default": "'/messages'",
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 45,
+            "description": "タスク関連追加URL",
+            "itemtype": "property",
+            "name": "TASKS_URL",
+            "type": "String",
+            "default": "'/tasks'",
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 54,
+            "description": "ファイル関連追加URL",
+            "itemtype": "property",
+            "name": "FILES_URL",
+            "type": "String",
+            "default": "'/files'",
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 63,
+            "description": "チャットルームID",
+            "itemtype": "property",
+            "name": "$_roomId",
+            "type": "Integer",
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 71,
+            "description": "サブクラス初期化メソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_initSelf",
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 82,
+            "description": "チャットルームID設定メソッド",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "setId",
+            "params": [
+                {
+                    "name": "$roomId",
+                    "description": "チャットルームID",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "this",
+                "type": "Modules_Rooms_Room"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 100,
+            "description": "チャットの名前、アイコン、種類(my/direct/group)を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "get",
+            "return": {
+                "description": "チャットルーム情報、またはfalse",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 112,
+            "description": "チャットの名前、アイコンをアップデート",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'description' => '[チャット概要]',\n    'icon_preset' => '[アイコン種類]',\n    'name' => '[グループチャット名]',\n)\n</code></pre>",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "チャットルームID、またはfalse",
+                "type": "Integer"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 133,
+            "description": "チャット概要をアップデート",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "setDescription",
+            "params": [
+                {
+                    "name": "$description",
+                    "description": "チャット概要",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "this",
+                "type": "Modules_Rooms_Room"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 150,
+            "description": "アイコンをアップデート",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "setIcon",
+            "params": [
+                {
+                    "name": "$icon",
+                    "description": "チャット概要",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "this",
+                "type": "Modules_Rooms_Room"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 167,
+            "description": "チャットの名前をアップデート",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "setName",
+            "params": [
+                {
+                    "name": "$name",
+                    "description": "グループチャット名",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "this",
+                "type": "Modules_Rooms_Room"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 184,
+            "description": "グループチャットを退席/削除する",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'action_type' => '[退席するか、削除するか]',\n)\n</code></pre>",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "true",
+                "type": "Boolean"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 204,
+            "description": "グループチャットを退席する",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "leave",
+            "return": {
+                "description": "this",
+                "type": "Modules_Rooms_Room"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 220,
+            "description": "グループチャットを削除する",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "delete",
+            "return": {
+                "description": "this",
+                "type": "Modules_Rooms_Room"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 236,
+            "description": "チャットのメンバー一覧を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getMembers",
+            "return": {
+                "description": "メンバー一覧",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 249,
+            "description": "チャットのメンバーを一括変更",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "setMembers",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'members_admin_ids' => '[管理者権限のユーザー（必須、カンマ区切り複数指定）]',\n    'members_member_ids' => '[メンバー権限のユーザー（カンマ区切り複数指定）]',\n    'members_readonly_ids' => '[閲覧のみ権限のユーザー（カンマ区切り複数指定）]',\n)\n</code></pre>",
+                    "type": "Array"
+                },
+                {
+                    "name": "$bReturnInstance",
+                    "description": "インスタンス返却フラグ",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
+            "return": {
+                "description": "現在のメンバーリスト、チャットルームインスタンス、またはfalse",
+                "type": "Mixed"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 281,
+            "description": "チャットに新しいメッセージを追加",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "setMessages",
+            "params": [
+                {
+                    "name": "$message",
+                    "description": "メッセージ本体",
+                    "type": "String"
+                },
+                {
+                    "name": "$bReturnInstance",
+                    "description": "インスタンス返却フラグ",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
+            "return": {
+                "description": "メッセージID、チャットルームインスタンス、またはfalse",
+                "type": "Mixed"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 307,
+            "description": "チャットのメッセージ一覧を取得\nTODO: API自体が未実装の予感",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getMessages",
+            "return": {
+                "description": "メッセージ一覧",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 321,
+            "description": "メッセージ情報を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getMessage",
+            "params": [
+                {
+                    "name": "$messageId",
+                    "description": "メッセージID",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "メッセージ情報",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 335,
+            "description": "チャットのタスク一覧を取得<br />\n (※100件まで取得可能。今後、より多くのデータを取得する為のページネーションの仕組みを提供予定)",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getTasks",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'account_id' => '[タスクの担当者のアカウントID]',\n    'assigned_by_account_id' => '[タスクの依頼者のアカウントID]',\n    'status' => '[タスクのステータス]',\n)\n</code></pre>",
+                    "type": "Array",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "return": {
+                "description": "タスク一覧",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 356,
+            "description": "チャットの未完了タスク一覧を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getOpenTasks",
+            "params": [
+                {
+                    "name": "$accountId",
+                    "description": "アカウントID",
+                    "type": "Integer",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "return": {
+                "description": "未完了タスク一覧",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 375,
+            "description": "チャットの完了タスク一覧を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getDoneTasks",
+            "params": [
+                {
+                    "name": "$accountId",
+                    "description": "アカウントID",
+                    "type": "Integer",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "return": {
+                "description": "完了なタスク一覧",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 394,
+            "description": "チャットに新しいメッセージを追加",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "itemtype": "method",
+            "name": "setMessages",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'body' => '[タスクの内容（必須）]',\n    'limit' => '[タスクの期限 Unix time]',\n    'to_ids' => '[担当者のアカウントID（必須、カンマ区切り複数指定）]',\n)\n</code></pre>",
+                    "type": "Array"
+                },
+                {
+                    "name": "$bReturnInstance",
+                    "description": "インスタンス返却フラグ",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
+            "return": {
+                "description": "タスクID、チャットルームインスタンス、またはfalse",
+                "type": "Mixed"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 426,
+            "description": "タスク情報を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getTask",
+            "params": [
+                {
+                    "name": "$taskId",
+                    "description": "タスクID",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "タスク情報",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 440,
+            "description": "チャットのファイル一覧を取得<br />\n (※100件まで取得可能。今後、より多くのデータを取得する為のページネーションの仕組みを提供予定)",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getFiles",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'account_id' => '[アップロードしたユーザーのアカウントID]',\n)\n</code></pre>",
+                    "type": "Array",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "return": {
+                "description": "ファイル一覧",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 459,
+            "description": "ユーザのファイル一覧を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getUserFiles",
+            "params": [
+                {
+                    "name": "$accountId",
+                    "description": "アカウントID",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "ユーザのファイル一覧",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 474,
+            "description": "ファイル情報を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getFile",
+            "params": [
+                {
+                    "name": "$fileId",
+                    "description": "ファイルID",
+                    "type": "Integer"
+                },
+                {
+                    "name": "$bDLLink",
+                    "description": "ダウンロードする為のURLを生成するか<br />\n30秒間だけダウンロード可能なURLを生成します<br />\n（配列のキーにdownload_urlが追加される）",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "ファイル情報",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Rooms/Room.php",
+            "line": 494,
+            "description": "ファイルのダウンロードリンクを取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getUserFiles",
+            "params": [
+                {
+                    "name": "$accountId",
+                    "description": "アカウントID",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "ダウンロードリンク、なければnull",
+                "type": "String"
+            },
+            "class": "Modules_Rooms_Room",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 5,
+            "description": "モジュール抽象クラス",
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 10,
+            "description": "チャットワークAPIエンドポイントベースURL",
+            "itemtype": "property",
+            "name": "BASE_URL",
+            "type": "String",
+            "default": "'https://api.chatwork.com/v1'",
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 19,
+            "description": "APIキー",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$_apiKey",
+            "type": "String",
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 28,
+            "description": "API URL",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$_apiUrl",
+            "type": "String",
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 51,
+            "description": "初期化メソッド",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "$apiKey",
+                    "description": "APIキー",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 64,
+            "description": "APIキー設定メソッド",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "setApiKey",
+            "params": [
+                {
+                    "name": "$apiKey",
+                    "description": "APIキー",
+                    "type": "String"
+                }
+            ],
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 76,
+            "description": "サブクラス初期化抽象メソッド",
+            "abstract": "",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_initSelf",
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 85,
+            "description": "POSTメソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_post",
+            "params": [
+                {
+                    "name": "$url",
+                    "description": "URL",
+                    "type": "String"
+                },
+                {
+                    "name": "$body",
+                    "description": "リクエストボディ",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "デコードされたレスポンス",
+                "type": "Array"
+            },
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 99,
+            "description": "GETメソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_get",
+            "params": [
+                {
+                    "name": "$url",
+                    "description": "URL",
+                    "type": "String"
+                },
+                {
+                    "name": "$body",
+                    "description": "リクエストボディ",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "デコードされたレスポンス",
+                "type": "Array"
+            },
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 113,
+            "description": "PUTメソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_put",
+            "params": [
+                {
+                    "name": "$url",
+                    "description": "URL",
+                    "type": "String"
+                },
+                {
+                    "name": "$body",
+                    "description": "リクエストボディ",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "デコードされたレスポンス",
+                "type": "Array"
+            },
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 127,
+            "description": "DELETEメソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_delete",
+            "params": [
+                {
+                    "name": "$url",
+                    "description": "URL",
+                    "type": "String"
+                },
+                {
+                    "name": "$body",
+                    "description": "リクエストボディ",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "デコードされたレスポンス",
+                "type": "Array"
+            },
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Abstract.php",
+            "line": 141,
+            "description": "送信実行メソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_exec",
+            "params": [
+                {
+                    "name": "$url",
+                    "description": "URL",
+                    "type": "String"
+                },
+                {
+                    "name": "$body",
+                    "description": "リクエストボディ",
+                    "type": "Array"
+                },
+                {
+                    "name": "$method",
+                    "description": "送信メソッド",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "デコードされたレスポンス",
+                "type": "Array"
+            },
+            "class": "Modules_Abstract",
+            "module": "Modules_Rooms_Room"
+        },
+        {
+            "file": "modules/Contacts.php",
+            "line": 20,
+            "description": "チャットワークAPIエンドポイントパス",
+            "itemtype": "property",
+            "name": "ENDPOINT",
+            "type": "String",
+            "default": "'/contacts'",
+            "class": "Modules_Contacts",
+            "module": "Modules_Contacts"
+        },
+        {
+            "file": "modules/Contacts.php",
+            "line": 29,
+            "description": "サブクラス初期化メソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_initSelf",
+            "class": "Modules_Contacts",
+            "module": "Modules_Contacts"
+        },
+        {
+            "file": "modules/Contacts.php",
+            "line": 40,
+            "description": "自分のコンタクト一覧を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "get",
+            "return": {
+                "description": "自分のコンタクトリスト、ない場合はnull",
+                "type": "Array"
+            },
+            "class": "Modules_Contacts",
+            "module": "Modules_Contacts"
+        },
+        {
+            "file": "modules/Me.php",
+            "line": 20,
+            "description": "チャットワークAPIエンドポイントパス",
+            "itemtype": "property",
+            "name": "ENDPOINT",
+            "type": "String",
+            "default": "'/me'",
+            "class": "Modules_Me",
+            "module": "Modules_Me"
+        },
+        {
+            "file": "modules/Me.php",
+            "line": 29,
+            "description": "サブクラス初期化メソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_initSelf",
+            "class": "Modules_Me",
+            "module": "Modules_Me"
+        },
+        {
+            "file": "modules/Me.php",
+            "line": 40,
+            "description": "自分自身の情報を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "get",
+            "return": {
+                "description": "自分自身の情報",
+                "type": "Array"
+            },
+            "class": "Modules_Me",
+            "module": "Modules_Me"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 20,
+            "description": "チャットワークAPIエンドポイントパス",
+            "itemtype": "property",
+            "name": "ENDPOINT",
+            "type": "String",
+            "default": "'/my'",
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 29,
+            "description": "未読未完了関連追加URL",
+            "itemtype": "property",
+            "name": "STATUS_URL",
+            "type": "String",
+            "default": "'/status'",
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 38,
+            "description": "タスク関連追加URL",
+            "itemtype": "property",
+            "name": "TASKS_URL",
+            "type": "String",
+            "default": "'/tasks'",
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 47,
+            "description": "サブクラス初期化メソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_initSelf",
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 58,
+            "description": "自分の未読数、未読To数、未完了タスク数を返す",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getStatus",
+            "return": {
+                "description": "未読・未完了数リスト",
+                "type": "Array"
+            },
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 70,
+            "description": "自分のタスク一覧を取得する。<br />\n(※100件まで取得可能。今後、より多くのデータを取得する為のページネーションの仕組みを提供予定)",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getTasks",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'assigned_by_account_id' => '[タスクの依頼者のアカウントID]',\n    'status' => '[タスクのステータス]',\n)\n</code></pre>",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "タスクリスト",
+                "type": "Array"
+            },
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/Rooms.php",
+            "line": 22,
+            "description": "チャットワークAPIエンドポイントパス",
+            "itemtype": "property",
+            "name": "ENDPOINT",
+            "type": "String",
+            "default": "'/rooms'",
+            "class": "Modules_Rooms",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "modules/Rooms.php",
+            "line": 31,
+            "description": "チャットルーム保持",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$_rooms",
+            "type": "Array",
+            "class": "Modules_Rooms",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "modules/Rooms.php",
+            "line": 40,
+            "description": "サブクラス初期化メソッド",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_initSelf",
+            "class": "Modules_Rooms",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "modules/Rooms.php",
+            "line": 51,
+            "description": "チャットルームインスタンス取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getRoom",
+            "params": [
+                {
+                    "name": "$roomId",
+                    "description": "チャットルームID",
+                    "type": "Integer"
+                }
+            ],
+            "return": {
+                "description": "チャットルームインスタンス",
+                "type": "Modules_Rooms_Room"
+            },
+            "class": "Modules_Rooms",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "modules/Rooms.php",
+            "line": 69,
+            "description": "自分のチャット一覧の取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getList",
+            "return": {
+                "description": "チャットルームリスト",
+                "type": "Array"
+            },
+            "class": "Modules_Rooms",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "modules/Rooms.php",
+            "line": 81,
+            "description": "グループチャットを新規作成",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "$params",
+                    "description": "パラメータ配列\n<pre><code>array(\n    'description' => '[チャット概要]',\n    'icon_preset' => '[アイコン種類]',\n    'members_admin_ids' => '[管理者権限のユーザー（必須、カンマ区切り複数指定）]',\n    'members_member_ids' => '[メンバー権限のユーザー（カンマ区切り複数指定）]',\n    'members_readonly_ids' => '[閲覧のみ権限のユーザー（カンマ区切り複数指定）]',\n    'name' => '[グループチャット名（必須）]',\n)\n</code></pre>",
+                    "type": "Array"
+                },
+                {
+                    "name": "$bReturnInstance",
+                    "description": "インスタンス返却フラグ",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
+            "return": {
+                "description": "チャットルームID、チャットルームインスタンス、またはfalse",
+                "type": "Mixed"
+            },
+            "class": "Modules_Rooms",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "pw.php",
+            "line": 3,
+            "description": "PhatWorkクラス",
+            "class": "PW",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "pw.php",
+            "line": 9,
+            "description": "インスタンス保持",
+            "access": "protected",
+            "tagname": "",
+            "static": 1,
+            "itemtype": "property",
+            "name": "$_instance",
+            "type": "PW",
+            "class": "PW",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "pw.php",
+            "line": 19,
+            "description": "APIキー",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$_apiKey",
+            "type": "String",
+            "class": "PW",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "pw.php",
+            "line": 28,
+            "description": "クラス参照保持",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$_classes",
+            "type": "Array",
+            "class": "PW",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "pw.php",
+            "line": 50,
+            "description": "インスタンス取得メソッド",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "itemtype": "method",
+            "name": "getInstance",
+            "params": [
+                {
+                    "name": "$apiKey",
+                    "description": "APIキー",
+                    "type": "String"
+                }
+            ],
+            "class": "PW",
+            "module": "Modules_Rooms"
+        },
+        {
+            "file": "pw.php",
+            "line": 66,
+            "description": "クラス取得オーバーロード",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "__get",
+            "params": [
+                {
+                    "name": "$key",
+                    "description": "エンドポイントキー",
+                    "type": "String"
+                }
+            ],
+            "class": "PW",
+            "module": "Modules_Rooms"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: abstract",
+            "line": " modules/Abstract.php:76"
+        },
+        {
+            "message": "Missing item type\nモジュール抽象クラス",
+            "line": " modules/Abstract.php:5"
+        },
+        {
+            "message": "Missing item type\nPhatWorkクラス",
+            "line": " pw.php:3"
+        }
+    ]
+}
