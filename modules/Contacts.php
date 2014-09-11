@@ -5,11 +5,17 @@ require_once('Abstract.php');
 /**
  * コンタクトユーザモジュール
  *
- * @class Modules_Contacts
- * @extends Modules_Abstract
+ * @module Modules_Contacts
  */
 class Modules_Contacts extends Modules_Abstract
 {
+    /**
+     * コンタクトユーザクラス
+     *
+     * @class Modules_Contacts
+     * @extends Modules_Abstract
+     * @constructor
+     */
 
     /**
      * チャットワークAPIエンドポイントパス
@@ -19,14 +25,6 @@ class Modules_Contacts extends Modules_Abstract
      * @default '/contacts'
      */
     const ENDPOINT = '/contacts';
-
-    /**
-     * API URL
-     *
-     * @property $_apiUrl
-     * @type String
-     */
-    protected $_apiUrl;
 
     /**
      * サブクラス初期化メソッド
@@ -44,7 +42,7 @@ class Modules_Contacts extends Modules_Abstract
      *
      * @public
      * @method get
-     * @return {Array} 自分のコンタクトリスト
+     * @return {Array} 自分のコンタクトリスト、ない場合はnull
      */
     public function get()
     {

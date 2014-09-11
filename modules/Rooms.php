@@ -6,11 +6,19 @@ require_once('Rooms/Room.php');
 /**
  * チャットルーム管理モジュール
  *
- * @class Modules_Rooms
- * @extends Modules_Abstract
+ * @module Modules_Rooms
+ * @requires Modules_Rooms_Room
  */
 class Modules_Rooms extends Modules_Abstract
 {
+    /**
+     * チャットルーム管理クラス
+     *
+     * @class Modules_Rooms
+     * @extends Modules_Abstract
+     * @constructor
+     */
+
     /**
      * チャットワークAPIエンドポイントパス
      *
@@ -19,7 +27,6 @@ class Modules_Rooms extends Modules_Abstract
      * @default '/rooms'
      */
     const ENDPOINT = '/rooms';
-
 
     /**
      * チャットルーム保持

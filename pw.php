@@ -2,8 +2,6 @@
 
 /**
  * PhatWorkクラス
- *
- * @class PW
  */
 class PW
 {
@@ -37,10 +35,10 @@ class PW
     protected $_classes = array();
 
     /**
-     * コンストラクタ
+     * PhatWorkクラス
      *
      * @public
-     * @method __construct
+     * @class PW
      * @constructor
      * @param {String} $apiKey APIキー
      */

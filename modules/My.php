@@ -5,11 +5,17 @@ require_once('Abstract.php');
 /**
  * 自分が持つデータへのアクセスモジュール
  *
- * @class Modules_My
- * @extends Modules_Abstract
+ * @module Modules_My
  */
 class Modules_My extends Modules_Abstract
 {
+    /**
+     * 自分が持つデータへのアクセスクラス
+     *
+     * @class Modules_My
+     * @extends Modules_Abstract
+     * @constructor
+     */
 
     /**
      * チャットワークAPIエンドポイントパス
@@ -37,14 +43,6 @@ class Modules_My extends Modules_Abstract
      * @default '/tasks'
      */
     const TASKS_URL = '/tasks';
-
-    /**
-     * API URL
-     *
-     * @property $_apiUrl
-     * @type String
-     */
-    protected $_apiUrl;
 
     /**
      * サブクラス初期化メソッド

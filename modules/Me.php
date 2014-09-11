@@ -5,11 +5,17 @@ require_once('Abstract.php');
 /**
  * 自分自身の情報モジュール
  *
- * @class Modules_Me
- * @extends Modules_Abstract
+ * @module Modules_Me
  */
 class Modules_Me extends Modules_Abstract
 {
+    /**
+     * 自分自身の情報クラス
+     *
+     * @class Modules_Me
+     * @extends Modules_Abstract
+     * @constructor
+     */
 
     /**
      * チャットワークAPIエンドポイントパス
@@ -19,14 +25,6 @@ class Modules_Me extends Modules_Abstract
      * @default '/me'
      */
     const ENDPOINT = '/me';
-
-    /**
-     * API URL
-     *
-     * @property $_apiUrl
-     * @type String
-     */
-    protected $_apiUrl;
 
     /**
      * サブクラス初期化メソッド

@@ -4,13 +4,9 @@ define('DS', DIRECTORY_SEPARATOR);
 
 /**
  * モジュール抽象クラス
- *
- * @abstract
- * @class Modules_Abstract
  */
 abstract class Modules_Abstract
 {
-
     /**
      * チャットワークAPIエンドポイントベースURL
      *
@@ -30,15 +26,24 @@ abstract class Modules_Abstract
     protected $_apiKey;
 
     /**
-     * コンストラクタ
+     * API URL
+     *
+     * @protected
+     * @property $_apiUrl
+     * @type String
+     */
+    protected $_apiUrl;
+
+    /**
+     * モジュール抽象クラス
      *
      * @final
      * @public
-     * @method __construct
+     * @class Modules_Abstract
      * @constructor
-     * @param {String} [$apiKey=null] APIキー
+     * @param {String} $apiKey APIキー
      */
-    final public function __construct($apiKey = null)
+    final public function __construct($apiKey)
     {
         $this->init($apiKey);
     }

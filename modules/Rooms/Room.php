@@ -3,11 +3,17 @@
 /**
  * チャットルームモジュール
  *
- * @class Modules_Rooms_Room
- * @extends Modules_Abstract
+ * @module Modules_Rooms_Room
  */
 class Modules_Rooms_Room extends Modules_Abstract
 {
+    /**
+     * チャットルームクラス
+     *
+     * @class Modules_Rooms_Room
+     * @extends Modules_Abstract
+     * @constructor
+     */
 
     /**
      * チャットワークAPIエンドポイントパス
@@ -53,14 +59,6 @@ class Modules_Rooms_Room extends Modules_Abstract
      * @default '/files'
      */
     const FILES_URL = '/files';
-
-    /**
-     * API URL
-     *
-     * @property $_apiUrl
-     * @type String
-     */
-    protected $_apiUrl;
 
     /**
      * チャットルームID
