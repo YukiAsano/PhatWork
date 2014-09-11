@@ -66,7 +66,7 @@ class Modules_Rooms_Room extends Modules_Abstract
      * チャットルームID
      *
      * @property $_roomId
-     * @type String
+     * @type Integer
      */
     protected $_roomId;
 
@@ -87,7 +87,7 @@ class Modules_Rooms_Room extends Modules_Abstract
      * @public
      * @chainable
      * @method setId
-     * @param {String} $roomId チャットルームID
+     * @param {Integer} $roomId チャットルームID
      * @return {Modules_Rooms_Room} this
      */
     public function setId($roomId)
@@ -325,7 +325,7 @@ class Modules_Rooms_Room extends Modules_Abstract
      *
      * @public
      * @method getMessage
-     * @param {String} $messageId メッセージID
+     * @param {Integer} $messageId メッセージID
      * @return {Array} メッセージ情報
      */
     public function getMessage($messageId)
@@ -430,12 +430,80 @@ class Modules_Rooms_Room extends Modules_Abstract
      *
      * @public
      * @method getTask
-     * @param {String} $taskId タスクID
+     * @param {Integer} $taskId タスクID
      * @return {Array} タスク情報
      */
     public function getTask($taskId)
     {
         $url = $this->_apiUrl . self::TASKS_URL . '/' . $taskId;
         return $this->_get($url, null);
+    }
+
+    /**
+     * チャットのファイル一覧を取得<br />
+     *  (※100件まで取得可能。今後、より多くのデータを取得する為のページネーションの仕組みを提供予定)
+     *
+     * @public
+     * @method getFiles
+     * @param {Array} [$params=null] パラメータ配列
+     * <pre><code>array(
+     *     'account_id' => '[アップロードしたユーザーのアカウントID]',
+     * )
+     * </code></pre>
+     * @return {Array} ファイル一覧
+     */
+    public function getFiles($params = null)
+    {
+        $url = $this->_apiUrl . self::FILES_URL;
+        return $this->_get($url, $params);
+    }
+
+    /**
+     * ユーザのファイル一覧を取得
+     *
+     * @public
+     * @method getUserFiles
+     * @param {Integer} $accountId アカウントID
+     * @return {Array} ユーザのファイル一覧
+     */
+    public function getUserFiles($accountId)
+    {
+        return $this->getFiles(array(
+            'account_id' => $accountId
+        ));
+    }
+
+    /**
+     * ファイル情報を取得
+     *
+     * @public
+     * @method getFile
+     * @param {Integer} $fileId ファイルID
+     * @param {Boolean} [$bDLLink=false] ダウンロードする為のURLを生成するか<br />
+     * 30秒間だけダウンロード可能なURLを生成します<br />
+     * （配列のキーにdownload_urlが追加される）
+     * @return {Array} ファイル情報
+     */
+    public function getFile($fileId, $bDLLink = false)
+    {
+        $params = array(
+            'create_download_url' => $bDLLink
+        );
+        $url = $this->_apiUrl . self::FILES_URL . '/' . $fileId;
+        return $this->_get($url, $params);
+    }
+
+    /**
+     * ファイルのダウンロードリンクを取得
+     *
+     * @public
+     * @method getUserFiles
+     * @param {Integer} $accountId アカウントID
+     * @return {String} ダウンロードリンク、なければnull
+     */
+    public function getDownLoadLink($fileId)
+    {
+        $ret = $this->getFile($fileId, true);
+        return isset($ret['download_url']) ? $ret['download_url'] : null;
     }
 }

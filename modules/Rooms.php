@@ -46,7 +46,7 @@ class Modules_Rooms extends Modules_Abstract
      *
      * @public
      * @method getRoom
-     * @param {String} $roomId チャットルームID
+     * @param {Integer} $roomId チャットルームID
      * @return {Modules_Rooms_Room} チャットルームインスタンス
      */
     public function getRoom($roomId)
