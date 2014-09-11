@@ -285,11 +285,114 @@ abstract class Modules_Abstract
             )
         );
 
-        $result =  file_get_contents($url, false, stream_context_create($context));
+        try {
+
+            $result =  file_get_contents($url, false, stream_context_create($context));
+
+        } catch (ErrorException $e) {
+
+            // TODO: エラー処理どうしよう
+            $trace = $e-&gt;getTrace();
+
+            $logDir = realpath(__DIR__.DS.&#x27;../&#x27;).DS.&#x27;logs&#x27;;
+
+            $err = array();
+            $err[] = date(&quot;Y-m-d H:i:s&quot;);
+            $err[] = $trace[0][&#x27;args&#x27;][1] . $trace[0][&#x27;args&#x27;][2].&#x27;line: &#x27;.$trace[0][&#x27;args&#x27;][3];
+            $err[] = json_encode($trace[0][&#x27;args&#x27;][4], true);
+            $err[] = &#x27;--&#x27;;
+            $err[] = &#x27;&#x27;;
+
+            error_log(implode(&quot;\n&quot;, $err), 3, $logDir.DS.&#x27;error.log&#x27;);
+
+            /*
+            $status = $trace[0][&#x27;args&#x27;][4][&#x27;http_response_header&#x27;][0];
+            switch ($status) {
+                case &#x27;HTTP/1.1 401 Unauthorized&#x27;:
+                    $ret = array(
+                        &#x27;error&#x27; =&gt; 1,
+                        &#x27;status&#x27; =&gt; 401,
+                        &#x27;message&#x27; =&gt; &#x27;認証に失敗しました。APIキーをご確認ください。&#x27;
+                    );
+                    break;
+                case &#x27;HTTP/1.1 501 Not Implemented&#x27;:
+                    $ret = array(
+                        &#x27;error&#x27; =&gt; 1,
+                        &#x27;status&#x27; =&gt; 501,
+                        &#x27;message&#x27; =&gt; &#x27;未実装のAPIです。&#x27;
+                    );
+                    break;
+                case &#x27;HTTP/1.1 400 Bad Request&#x27;:
+                    $ret = array(
+                        &#x27;error&#x27; =&gt; 1,
+                        &#x27;status&#x27; =&gt; 501,
+                        &#x27;message&#x27; =&gt; &#x27;パラメータが不足しています。&#x27;
+                    );
+                    break;
+                default:
+                    $ret = array(
+                        &#x27;error&#x27; =&gt; 1,
+                        &#x27;status&#x27; =&gt; 418,
+                        &#x27;message&#x27; =&gt; &#x27;I\&#x27;m a teapot&#x27;
+                    );
+            }
+            return $ret;
+             */
+            return false;
+        }
         return json_decode($result, true);
     }
 
 }
+
+class PWErrorException extends ErrorException
+{
+    protected $severities = array(
+        E_ERROR             =&gt; &#x27;ERROR&#x27;,
+        E_WARNING           =&gt; &#x27;WARNING&#x27;,
+        E_PARSE             =&gt; &#x27;PARSING ERROR&#x27;,
+        E_NOTICE            =&gt; &#x27;NOTICE&#x27;,
+        E_CORE_ERROR        =&gt; &#x27;CORE ERROR&#x27;,
+        E_CORE_WARNING      =&gt; &#x27;CORE WARNING&#x27;,
+        E_COMPILE_ERROR     =&gt; &#x27;COMPILE ERROR&#x27;,
+        E_COMPILE_WARNING   =&gt; &#x27;COMPILE WARNING&#x27;,
+        E_USER_ERROR        =&gt; &#x27;USER ERROR&#x27;,
+        E_USER_WARNING      =&gt; &#x27;USER WARNING&#x27;,
+        E_USER_NOTICE       =&gt; &#x27;USER NOTICE&#x27;,
+        E_STRICT            =&gt; &#x27;STRICT NOTICE&#x27;,
+        E_RECOVERABLE_ERROR =&gt; &#x27;RECOVERABLE ERROR&#x27;,
+        E_DEPRECATED        =&gt; &#x27;DEPRECATED&#x27;,
+        E_USER_DEPRECATED   =&gt; &#x27;USER DEPRECATED&#x27;,
+    );
+
+    public function getFullMessage()
+    {
+        return sprintf(
+            &#x27;%s: %s in %s on line %u&#x27;,
+            $this-&gt;getSeverityString(),
+            $this-&gt;getMessage(),
+            $this-&gt;getFile(),
+            $this-&gt;getLine()
+        );
+    }
+
+    public function getSeverityString()
+    {
+        $severity = $this-&gt;getSeverity();
+        $ret = &#x27;UNKNOWN ERROR(&#x27;.$severity.&#x27;)&#x27;;
+        if (isset($this-&gt;severities[$severity]))
+        {
+            $ret = $this-&gt;severities[$severity];
+        }
+        return $ret;
+    }
+}
+
+set_error_handler(function ($errno, $errstr, $errfile, $errline ) {
+    $errorException = new PWErrorException($errstr, 0, $errno, $errfile, $errline);
+    echo $errorException-&gt;getFullMessage(), PHP_EOL;
+    throw $errorException;
+});
 
     </pre>
 </div>

@@ -456,7 +456,7 @@
             "params": [
                 {
                     "name": "$icon",
-                    "description": "チャット概要",
+                    "description": "アイコン種類",
                     "type": "String"
                 }
             ],
@@ -1259,6 +1259,54 @@
             ],
             "return": {
                 "description": "タスクリスト",
+                "type": "Array"
+            },
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 89,
+            "description": "自分の未完了タスク一覧を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getOpenTasks",
+            "params": [
+                {
+                    "name": "$assignedByAccountId",
+                    "description": "タスクの依頼者のアカウントID",
+                    "type": "Integer",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "return": {
+                "description": "未完了タスク一覧",
+                "type": "Array"
+            },
+            "class": "Modules_My",
+            "module": "Modules_My"
+        },
+        {
+            "file": "modules/My.php",
+            "line": 108,
+            "description": "自分の完了タスク一覧を取得",
+            "access": "public",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "getDoneTasks",
+            "params": [
+                {
+                    "name": "$assignedByAccountId",
+                    "description": "タスクの依頼者のアカウントID",
+                    "type": "Integer",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "return": {
+                "description": "完了なタスク一覧",
                 "type": "Array"
             },
             "class": "Modules_My",
