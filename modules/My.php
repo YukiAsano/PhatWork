@@ -85,4 +85,42 @@ class Modules_My extends Modules_Abstract
     {
         return $this->_get($this->_apiUrl.self::TASKS_URL, $params);
     }
+
+    /**
+     * 自分の未完了タスク一覧を取得
+     *
+     * @public
+     * @method getOpenTasks
+     * @param {Integer} [$assignedByAccountId=null] タスクの依頼者のアカウントID
+     * @return {Array} 未完了タスク一覧
+     */
+    public function getOpenTasks($assignedByAccountId = null)
+    {
+        $params = array(
+            'status' => 'open'
+        );
+        if (!is_null($assignedByAccountId)) {
+            $params['assigned_by_account_id'] = $assignedByAccountId;
+        }
+        return $this->getTasks($params);
+    }
+
+    /**
+     * 自分の完了タスク一覧を取得
+     *
+     * @public
+     * @method getDoneTasks
+     * @param {Integer} [$assignedByAccountId=null] タスクの依頼者のアカウントID
+     * @return {Array} 完了なタスク一覧
+     */
+    public function getDoneTasks($assignedByAccountId = null)
+    {
+        $params = array(
+            'status' => 'done'
+        );
+        if (!is_null($assignedByAccountId)) {
+            $params['assigned_by_account_id'] = $assignedByAccountId;
+        }
+        return $this->getTasks($params);
+    }
 }
