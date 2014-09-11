@@ -175,8 +175,111 @@ abstract class Modules_Abstract
             )
         );
 
-        $result =  file_get_contents($url, false, stream_context_create($context));
+        try {
+
+            $result =  file_get_contents($url, false, stream_context_create($context));
+
+        } catch (ErrorException $e) {
+
+            // TODO: エラー処理どうしよう
+            $trace = $e->getTrace();
+
+            $logDir = realpath(__DIR__.DS.'../').DS.'logs';
+
+            $err = array();
+            $err[] = date("Y-m-d H:i:s");
+            $err[] = $trace[0]['args'][1] . $trace[0]['args'][2].'line: '.$trace[0]['args'][3];
+            $err[] = json_encode($trace[0]['args'][4], true);
+            $err[] = '--';
+            $err[] = '';
+
+            error_log(implode("\n", $err), 3, $logDir.DS.'error.log');
+
+            /*
+            $status = $trace[0]['args'][4]['http_response_header'][0];
+            switch ($status) {
+                case 'HTTP/1.1 401 Unauthorized':
+                    $ret = array(
+                        'error' => 1,
+                        'status' => 401,
+                        'message' => '認証に失敗しました。APIキーをご確認ください。'
+                    );
+                    break;
+                case 'HTTP/1.1 501 Not Implemented':
+                    $ret = array(
+                        'error' => 1,
+                        'status' => 501,
+                        'message' => '未実装のAPIです。'
+                    );
+                    break;
+                case 'HTTP/1.1 400 Bad Request':
+                    $ret = array(
+                        'error' => 1,
+                        'status' => 501,
+                        'message' => 'パラメータが不足しています。'
+                    );
+                    break;
+                default:
+                    $ret = array(
+                        'error' => 1,
+                        'status' => 418,
+                        'message' => 'I\'m a teapot'
+                    );
+            }
+            return $ret;
+             */
+            return false;
+        }
         return json_decode($result, true);
     }
 
 }
+
+class PWErrorException extends ErrorException
+{
+    protected $severities = array(
+        E_ERROR             => 'ERROR',
+        E_WARNING           => 'WARNING',
+        E_PARSE             => 'PARSING ERROR',
+        E_NOTICE            => 'NOTICE',
+        E_CORE_ERROR        => 'CORE ERROR',
+        E_CORE_WARNING      => 'CORE WARNING',
+        E_COMPILE_ERROR     => 'COMPILE ERROR',
+        E_COMPILE_WARNING   => 'COMPILE WARNING',
+        E_USER_ERROR        => 'USER ERROR',
+        E_USER_WARNING      => 'USER WARNING',
+        E_USER_NOTICE       => 'USER NOTICE',
+        E_STRICT            => 'STRICT NOTICE',
+        E_RECOVERABLE_ERROR => 'RECOVERABLE ERROR',
+        E_DEPRECATED        => 'DEPRECATED',
+        E_USER_DEPRECATED   => 'USER DEPRECATED',
+    );
+
+    public function getFullMessage()
+    {
+        return sprintf(
+            '%s: %s in %s on line %u',
+            $this->getSeverityString(),
+            $this->getMessage(),
+            $this->getFile(),
+            $this->getLine()
+        );
+    }
+
+    public function getSeverityString()
+    {
+        $severity = $this->getSeverity();
+        $ret = 'UNKNOWN ERROR('.$severity.')';
+        if (isset($this->severities[$severity]))
+        {
+            $ret = $this->severities[$severity];
+        }
+        return $ret;
+    }
+}
+
+set_error_handler(function ($errno, $errstr, $errfile, $errline ) {
+    $errorException = new PWErrorException($errstr, 0, $errno, $errfile, $errline);
+    echo $errorException->getFullMessage(), PHP_EOL;
+    throw $errorException;
+});
