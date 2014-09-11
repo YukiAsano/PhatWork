@@ -35,7 +35,7 @@ class Modules_Rooms extends Modules_Abstract
      * @property $_rooms
      * @type Array
      */
-    public $_rooms = array();
+    private $_rooms = array();
 
     /**
      * サブクラス初期化メソッド
