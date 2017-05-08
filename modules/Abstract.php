@@ -14,7 +14,7 @@ abstract class Modules_Abstract
      * @type String
      * @default 'https://api.chatwork.com/v1'
      */
-    const BASE_URL = 'https://api.chatwork.com/v1';
+    const BASE_URL = 'https://api.chatwork.com/v2';
 
     /**
      * APIキー
