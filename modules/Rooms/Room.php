@@ -306,15 +306,15 @@ class Modules_Rooms_Room extends Modules_Abstract
 
     /**
      * チャットのメッセージ一覧を取得
-     * TODO: API自体が未実装の予感
      *
      * @public
      * @method getMessages
+     * @param {Boolean} [$bForce=false] 最新100件を取得する場合はtrue
      * @return {Array} メッセージ一覧
      */
-    public function getMessages()
+    public function getMessages($bForce = false)
     {
-        $url = $this->_apiUrl . self::MESSAGES_URL;
+        $url = $this->_apiUrl . self::MESSAGES_URL.'?force='.((int)$bForce);
         return $this->_get($url, null);
     }
 
