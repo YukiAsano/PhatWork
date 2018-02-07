@@ -5,7 +5,7 @@ define('DS', DIRECTORY_SEPARATOR);
 class PhatWork
 {
 
-    const BASE_URL = 'https://api.chatwork.com/v1';
+    const BASE_URL = 'https://api.chatwork.com/v2';
 
     protected $_apiKey;
     protected $_roomId;

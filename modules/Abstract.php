@@ -12,7 +12,7 @@ abstract class Modules_Abstract
      *
      * @property BASE_URL
      * @type String
-     * @default 'https://api.chatwork.com/v1'
+     * @default 'https://api.chatwork.com/v2'
      */
     const BASE_URL = 'https://api.chatwork.com/v2';
 
